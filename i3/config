@@ -3,19 +3,26 @@
 set $mod Mod4
 
 #---Window Title Font---
-font pango:monospace 8
+font pango:Jetbrains Mono 10
 
 #---Gaps---
 gaps inner 10
 gaps outer 2
 smart_gaps off
 
+#---Disable window title---
+default_border pixel 0
+
+#---Window border size---
+for_window [tiling] border pixel 2
+for_window [floating] border pixel 2
+
 #---AutoStart---
-exec --no-startup-id xrandr --output HDMI-A-0 --mode 1600x900 --rate 75
+exec --no-startup-id xrandr --output HDMI-A-0 --mode 1920x1080 --rate 75
 exec --no-startup-id dex --autostart --environment i3
 exec_always --no-startup-id autotiling
 exec --no-startup-id nm-applet
-exec_always --no-startup-id feh --bg-fill --no-xinerama ~/Pictures/wallpaper1.png
+exec --no-startup-id feh --bg-fill "/home/av_zai/Pictures/Wallpaper/wallpaper 1"
 
 #---Audio Control keys---
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -156,5 +163,3 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-
-
