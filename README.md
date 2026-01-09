@@ -5,11 +5,12 @@
 
 - Install i3 setup
 ```bash
-sudo pacman -S i3 xorg-server xorg-xinit xorg-xrandr
+sudo pacman -S --needed archlinux-keyring base base-devel linux linux-firmware git pulseaudio xorg xorg-xinit xorg-server
 ```
+
 - Install essential apps
 ```bash
-sudo pacman -S brave-bin polybar picom alacritty feh rofi pipewire pipewire-audio btop thunar wireplumber dunst pavucontrol network-manager wget curl git
+sudo pacman -S brave-bin polybar picom alacritty feh rofi pipewire pipewire-audio btop thunar wireplumber dunst pavucontrol network-manager wget curl git nano lxappearance papirus-icon-theme
 ```
 
 # Installation of YAY
@@ -39,3 +40,5 @@ unzip JetBrainsMono.zip
 rm JetBrainsMono.zip
 fc-cache -fv
 ```
+
+
