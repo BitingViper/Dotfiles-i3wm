@@ -1,0 +1,21 @@
+; Polybar Config
+
+[colors]
+background =
+background-alt =
+foreground = 
+primary = 
+secondary = 
+alert =
+disabled =
+border =
+
+[bar/bar]
+width = 100%
+height = 20pt
+radius = 0
+
+background
+foreground 
+
+

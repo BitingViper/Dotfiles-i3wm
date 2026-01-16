@@ -6,23 +6,29 @@ set $mod Mod4
 font pango:Jetbrains Mono 10
 
 #---Gaps---
-gaps inner 10
-gaps outer 2
+gaps inner 12
+gaps outer 6
 smart_gaps off
 
 #---Disable window title---
 default_border pixel 0
 
-#---Window border size---
-for_window [tiling] border pixel 2
-for_window [floating] border pixel 2
+#--- BORDER COLORS (MONOCHROME) -------------------
+#                       Border   Background   Indicator   Parent_Border
+client.focused             #d9d9d9 #d9d9d9 #d9d9d9 #d9d9d9
+client.focused_inactive    #7a7a7a #7a7a7a #7a7a7a #7a7a7a
+client.unfocused           #3a3a3a #3a3a3a #3a3a3a #3a3a3a
+client.urgent              #a0a0a0 #a0a0a0 #a0a0a0 #a0a0a0
+client.placeholder         #3a3a3a #3a3a3a #3a3a3a #3a3a3a
+
+#---Floating Dialogs---
+for_window [window_role="GtkFileChooserDialog"] floating enable, resize set 800 600, move position center, border none
 
 #---AutoStart---
-exec --no-startup-id xrandr --output HDMI-A-0 --mode 1920x1080 --rate 75
-exec --no-startup-id dex --autostart --environment i3
+exec_always --no-startup-id ~/.screenlayout/startup.s
 exec_always --no-startup-id autotiling
+exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id nm-applet
-exec --no-startup-id feh --bg-fill "/home/av_zai/Pictures/Wallpaper/wallpaper 1"
 
 #---Audio Control keys---
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -38,9 +44,9 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 #---Application Launching---
-
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec alacritty
 bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+c exec env CM_LAUNCHER=rofi clipmenu
 
 #--- kill focused window---
 bindsym $mod+Shift+q kill
@@ -163,3 +169,9 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+#---Screenshots---
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/$(date)"
+bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+
